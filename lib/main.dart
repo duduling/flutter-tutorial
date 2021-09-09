@@ -7,135 +7,43 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'POTATO',
-      home: Grade(),
+      title: 'Appbar',
+      theme: ThemeData(
+        primaryColor: Colors.red,
+      ),
+      home: MyPage(),
     );
   }
 }
 
-class Grade extends StatelessWidget {
+class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[800],
       appBar: AppBar(
-        title: Text('POTATO'),
-        backgroundColor: Colors.amber[700],
+        title: Text('Appbar icon menu'),
         centerTitle: true,
         elevation: 0.0,
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 40.0, 0, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/potato.png'),
-                radius: 60.0,
-              ),
-            ),
-            Divider(
-              height: 60.0,
-              color: Colors.grey[850],
-              thickness: 0.5,
-              endIndent: 30.0,
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text(
-              'POTATO',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Text(
-              'LEVEL',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text(
-              '10',
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              children: <Widget>[
-                Icon(Icons.check_circle_outline),
-                SizedBox(width: 10.0),
-                Text(
-                  'using lightsaber',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    letterSpacing: 1.0,
-                  ),
-                )
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Icon(Icons.check_circle_outline),
-                SizedBox(width: 10.0),
-                Text(
-                  'face hero tattoo',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    letterSpacing: 1.0,
-                  ),
-                )
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Icon(Icons.check_circle_outline),
-                SizedBox(width: 10.0),
-                Text(
-                  'fire flames',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    letterSpacing: 1.0,
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/ani.gif'),
-                radius: 80.0,
-                backgroundColor: Colors.amber[800],
-              ),
-            )
-          ],
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            print('menu button is clicked');
+          },
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              print('Shopping cart button is clicked');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('Search button is clicked');
+            },
+          ),
+        ],
       ),
     );
   }
