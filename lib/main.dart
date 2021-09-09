@@ -39,68 +39,24 @@ class MyPage extends StatelessWidget {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('assets/potato.png'),
+      body: Builder(
+        builder: (BuildContext ctx) {
+          return Center(
+            child: TextButton(
+              child: Text(
+                'Show me',
+                style: TextStyle(color: Colors.white),
               ),
-              otherAccountsPictures: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/ani.gif'),
-                  backgroundColor: Colors.white,
-                ),
-              ],
-              accountName: Text('Potato'),
-              accountEmail: Text('potato@gamil.com'),
-              onDetailsPressed: () {
-                print('Detail');
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+              ),
+              onPressed: () {
+                ScaffoldMessenger.of(ctx)
+                    .showSnackBar(SnackBar(content: Text('Hello')));
               },
-              decoration: BoxDecoration(
-                color: Colors.red[200],
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40.0),
-                  bottomRight: Radius.circular(40.0),
-                ),
-              ),
             ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-                color: Colors.grey[850],
-              ),
-              title: Text('Home'),
-              onTap: () {
-                print('Home is clciked');
-              },
-              trailing: Icon(Icons.add),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.settings,
-                color: Colors.grey[850],
-              ),
-              title: Text('Setting'),
-              onTap: () {
-                print('Setting is clciked');
-              },
-              trailing: Icon(Icons.add),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.question_answer,
-                color: Colors.grey[850],
-              ),
-              title: Text('Q&A'),
-              onTap: () {
-                print('Q&A is clciked');
-              },
-              trailing: Icon(Icons.add),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
