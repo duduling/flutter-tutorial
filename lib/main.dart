@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,25 +40,66 @@ class MyPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Builder(
-        builder: (BuildContext ctx) {
-          return Center(
-            child: TextButton(
-              child: Text(
-                'Show me',
-                style: TextStyle(color: Colors.white),
+      // body: MySnackBar(),
+      body: Center(
+        child: TextButton(
+          onPressed: () {
+            flutterToast();
+          },
+          child: Text(
+            'Toast',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blue),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MySnackBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: TextButton(
+        child: Text(
+          'Show me',
+          style: TextStyle(color: Colors.white),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.red),
+        ),
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Hello',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.red),
-              ),
-              onPressed: () {
-                ScaffoldMessenger.of(ctx)
-                    .showSnackBar(SnackBar(content: Text('Hello')));
-              },
+              backgroundColor: Colors.teal,
+              duration: Duration(milliseconds: 1000),
             ),
           );
         },
       ),
     );
   }
+}
+
+void flutterToast() {
+  Fluttertoast.showToast(
+    msg: 'Flutter',
+    gravity: ToastGravity.BOTTOM,
+    backgroundColor: Colors.redAccent,
+    fontSize: 20.0,
+    textColor: Colors.white,
+    toastLength: Toast.LENGTH_SHORT,
+  );
 }
