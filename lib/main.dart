@@ -47,6 +47,12 @@ class MyPage extends StatelessWidget {
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/potato.png'),
               ),
+              otherAccountsPictures: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/ani.gif'),
+                  backgroundColor: Colors.white,
+                ),
+              ],
               accountName: Text('Potato'),
               accountEmail: Text('potato@gamil.com'),
               onDetailsPressed: () {
@@ -59,6 +65,39 @@ class MyPage extends StatelessWidget {
                   bottomRight: Radius.circular(40.0),
                 ),
               ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('Home'),
+              onTap: () {
+                print('Home is clciked');
+              },
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.grey[850],
+              ),
+              title: Text('Setting'),
+              onTap: () {
+                print('Setting is clciked');
+              },
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.question_answer,
+                color: Colors.grey[850],
+              ),
+              title: Text('Q&A'),
+              onTap: () {
+                print('Q&A is clciked');
+              },
+              trailing: Icon(Icons.add),
             ),
           ],
         ),
